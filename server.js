@@ -25,7 +25,7 @@ app.use('/resources', express.static(path.join(__dirname, 'public')));
 app.set('views', `views`);
 app.set('view engine', 'hbs');
 
-const mongoUri = `mongodb+srv://20180808053:${process.env.MONGODB_ATLAS_PASSWORD}@dragndropcluster.calhqu1.mongodb.net/?retryWrites=true&w=majority`;
+const mongoUri = process.env.MONGODB_URL;
 mongoose.connect(
   mongoUri,
   {
