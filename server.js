@@ -1,10 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import userRoute from './user/user.route';
-import websiteRoute from './website/website.route';
-import pageRoute from './page/page.route';
-import reviewRoute from './review/review.route';
+import userRoute from './api/user/user.route';
+import websiteRoute from './api/website/website.route';
+import pageRoute from './api/page/page.route';
+import reviewRoute from './api/review/review.route';
 import { errorLogger, errorResponder } from './middleware/errorMiddleware';
 
 //Initialize App

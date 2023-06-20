@@ -1,6 +1,6 @@
 import User from './user.model';
 import bcrypt from 'bcryptjs';
-import { DragNDropError } from '../custom.errors';
+import { DragNDropError } from '../../custom.errors';
 
 const SALT_ROUNDS = 10;
 

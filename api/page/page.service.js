@@ -1,5 +1,5 @@
 import Page from './page.model';
-import { DragNDropError } from '../custom.errors';
+import { DragNDropError } from '../../custom.errors';
 
 export const getPagesByWebsiteId = async (websiteId) => {
   const pages = await Page.find({ websiteId });
