@@ -15,6 +15,7 @@ const INTERNAL_SERVER_ERROR = 500;
 //   });
 // };
 
+
 // express-async-handler redirects to errorLogger middleware when an error occurs
 export const errorLogger = (error, request, response, next) => {
   const { message, options } = error;
