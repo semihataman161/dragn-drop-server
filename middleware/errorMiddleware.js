@@ -1,4 +1,4 @@
-import fs from 'fs';
+// import fs from 'fs';
 
 const INTERNAL_SERVER_ERROR = 500;
 const FILE = 'error.log';
@@ -24,9 +24,9 @@ export const errorLogger = (error, request, response, next) => {
     status = options.statusCode;
   } 
 
-  const dateTime = new Date();
-  const fileContent = dateTime + ' -> ' + JSON.stringify({ status, data: request.body, message }) + '\n'
-  appendFileAsync(FILE, fileContent);
+  // const dateTime = new Date();
+  // const fileContent = dateTime + ' -> ' + JSON.stringify({ status, data: request.body, message }) + '\n'
+  // appendFileAsync(FILE, fileContent);
 
   // Redirect to errorResponder middleware
   next(error);
