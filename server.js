@@ -1,7 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import path from 'path';
 import userRoute from './user/user.route';
 import websiteRoute from './website/website.route';
 import pageRoute from './page/page.route';
@@ -20,10 +19,9 @@ const corsOptions = {
 corsOptions.credentials = true;
 app.use(cors(corsOptions));
 
-//HTML and Static file
-app.use('/resources', express.static(path.join(__dirname, 'public')));
-app.set('views', `views`);
-app.set('view engine', 'hbs');
+// //HTML and Static file
+// app.use('/resources', express.static(path.join(__dirname, 'public')));
+// app.set('views', `views`);
 
 const mongoUri = process.env.MONGODB_URL;
 mongoose.connect(

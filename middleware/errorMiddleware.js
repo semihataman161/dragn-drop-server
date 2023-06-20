@@ -1,19 +1,19 @@
 // import fs from 'fs';
 
 const INTERNAL_SERVER_ERROR = 500;
-const FILE = 'error.log';
+// const FILE = 'error.log';
 
-const appendFileAsync = (file, data) => {
-  return new Promise((resolve, reject) => {
-    fs.appendFile(file, data, (error) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve();
-      }
-    });
-  });
-};
+// const appendFileAsync = (file, data) => {
+//   return new Promise((resolve, reject) => {
+//     fs.appendFile(file, data, (error) => {
+//       if (error) {
+//         reject(error);
+//       } else {
+//         resolve();
+//       }
+//     });
+//   });
+// };
 
 // express-async-handler redirects to errorLogger middleware when an error occurs
 export const errorLogger = (error, request, response, next) => {
