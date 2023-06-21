@@ -87,6 +87,9 @@ app.use('/api/user', userRoute)
 app.use('/api/website', websiteRoute)
 app.use('/api/page', pageRoute);
 app.use('/api/review', reviewRoute);
+app.use('/api/healtCheck', (req, res) => {
+  res.status(200).json({ message: 'Server is running!' });
+});
 app.use('*', (request, response) => {
   response.status(404).json({ message: 'Route not found!' });
 });
