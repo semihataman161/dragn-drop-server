@@ -24,9 +24,6 @@ const corsOptions = {
 corsOptions.credentials = true;
 app.use(cors(corsOptions));
 
-const LOCAL_PORT = 8081;
-const PORT = process.env.APP_PORT || 8081;
-
 const options = {
   definition: {
     openapi: "3.1.0",
@@ -46,11 +43,8 @@ const options = {
     },
     servers: [
       {
-        url: `http://localhost:${PORT}`,
+        url: '/',
       },
-      {
-        url: `http://localhost:8082`,
-      }
     ],
   },
   apis: ["./page/*.js", "./review/*.js", "./user/*.js", "./website/*.js"],
@@ -97,6 +91,8 @@ app.use('*', (request, response) => {
 app.use(errorMiddleware.errorLogger);
 app.use(errorMiddleware.errorResponder);
 
+const LOCAL_PORT = 8081;
+const PORT = process.env.APP_PORT || 8081;
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
 });
