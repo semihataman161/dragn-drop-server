@@ -1,12 +1,12 @@
-import Page from './page.model';
-import { DragNDropError } from '../custom.errors';
+const Page = require('./page.model');
+const customErrors = require('../custom.errors');
 
-export const getPagesByWebsiteId = async (websiteId) => {
+const getPagesByWebsiteId = async (websiteId) => {
   const pages = await Page.find({ websiteId });
   return pages;
-};
+}
 
-export const createPage = async (request) => {
+const createPage = async (request) => {
   const newPage = new Page(request);
   
   newPage.save(function (error) {
@@ -17,18 +17,18 @@ export const createPage = async (request) => {
   });
 
   return newPage;
-};
+}
 
-export const deletePage = async (pageId) => {
+const deletePage = async (pageId) => {
   await Page.deleteOne({ _id: pageId }, function (error) {
     if (error) {
       console.log('Error while deleting page: ' + error);
       throw new Error(error);
     }
   });
-};
+}
 
-export const saveGrapesjsChanges = async (pageId, request) => {
+const saveGrapesjsChanges = async (pageId, request) => {
   await Page.updateOne(
     { _id: pageId }, // Conditions
     { $set: request }, // Updates
@@ -39,14 +39,16 @@ export const saveGrapesjsChanges = async (pageId, request) => {
       }
     },
   );
-};
+}
 
-export const loadGrapesjsContent = async (pageId) => {
+const loadGrapesjsContent = async (pageId) => {
   const page = await Page.findOne({ _id: pageId });
 
   if(!page) {
-    throw new DragNDropError(`There is no grapesjs editor content!`, { statusCode: 404 });
+    throw new customErrors.DragNDropError(`There is no grapesjs editor content!`, { statusCode: 404 });
   } 
 
   return page;
-};
+}
+
+module.exports = { getPagesByWebsiteId, createPage, deletePage, saveGrapesjsChanges, loadGrapesjsContent };

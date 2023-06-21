@@ -1,4 +1,4 @@
-import express from 'express';
+const express = require('express');
 const ReviewController = require('./review.controller');
 
 const router = express.Router();

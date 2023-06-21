@@ -1,12 +1,12 @@
-import express from 'express';
-import swaggerUi from 'swagger-ui-express';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import userRoute from '../user/user.route';
-import websiteRoute from '../website/website.route';
-import pageRoute from '../page/page.route';
-import reviewRoute from '../review/review.route';
-import { errorLogger, errorResponder } from '../middleware/errorMiddleware';
+const express = require('express');
+const swaggerUi = require('swagger-ui-express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const userRoute = require('../user/user.route');
+const websiteRoute = require('../website/website.route');
+const pageRoute = require('../page/page.route');
+const reviewRoute = require('../review/review.route');
+const errorMiddleware = require('../middleware/errorMiddleware');
 const swaggerJsdoc = require("swagger-jsdoc");
 require('dotenv').config();
 require('babel-register');
@@ -89,8 +89,8 @@ app.use('/api/review', reviewRoute);
 app.use('*', (request, response) => {
   response.status(404).json({ message: 'Route not found!' });
 });
-app.use(errorLogger);
-app.use(errorResponder);
+app.use(errorMiddleware.errorLogger);
+app.use(errorMiddleware.errorResponder);
 
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);

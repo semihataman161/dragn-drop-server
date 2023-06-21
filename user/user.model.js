@@ -78,7 +78,7 @@
  *         description: Some server error
  */
 
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const User = new mongoose.Schema(
     {
@@ -101,4 +101,4 @@ const User = new mongoose.Schema(
     }
 );
 
-export default mongoose.model('Users', User);
+module.exports = mongoose.model('Users', User);

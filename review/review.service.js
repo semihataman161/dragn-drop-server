@@ -1,7 +1,7 @@
-import Review from './review.model';
-import User from '../user/user.model';
+const Review = require('./review.model');
+const User = require('../user/user.model');
 
-export const getAllReviews = async () => {
+const getAllReviews = async () => {
   const reviews = await Review.find({});
 
   let response = [];
@@ -18,9 +18,9 @@ export const getAllReviews = async () => {
   }
 
   return response;
-};
+}
 
-export const createReview = async (request) => {
+const createReview = async (request) => {
   const newReview = new Review(request);
 
   newReview.save(function (error) {
@@ -39,4 +39,6 @@ export const createReview = async (request) => {
     rating: newReview.rating,
     userName: user.userName,
   };
-};
+}
+
+module.exports = { getAllReviews, createReview };

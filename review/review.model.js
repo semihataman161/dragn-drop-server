@@ -98,4 +98,4 @@ const Review = new mongoose.Schema(
   }
 );
 
-export default mongoose.model('Reviews', Review);
+module.exports = mongoose.model('Reviews', Review); 

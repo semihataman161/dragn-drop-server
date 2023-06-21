@@ -100,4 +100,4 @@ const Website = new mongoose.Schema(
   },
 );
 
-export default mongoose.model('Websites', Website);
+module.exports = mongoose.model('Websites', Website);

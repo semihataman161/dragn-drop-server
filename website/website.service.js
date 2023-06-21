@@ -1,12 +1,11 @@
-import Website from './website.model';
+const Website = require('./website.model');
 
-
-export const getWebsitesByUserId = async (userId) => {
+const getWebsitesByUserId = async (userId) => {
   const websites = await Website.find({ userId });
   return websites;
 }
 
-export const createWebsite = async (request) => {
+const createWebsite = async (request) => {
   const newWebsite = new Website(request);
 
   newWebsite.save(function (error) {
@@ -18,3 +17,5 @@ export const createWebsite = async (request) => {
 
   return newWebsite;
 }
+
+module.exports = { getWebsitesByUserId, createWebsite };

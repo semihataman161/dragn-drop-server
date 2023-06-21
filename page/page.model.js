@@ -178,4 +178,4 @@ const Page = new mongoose.Schema(
   },
 );
 
-export default mongoose.model('Pages', Page);
+module.exports = mongoose.model('Pages', Page);
