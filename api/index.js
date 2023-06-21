@@ -67,6 +67,7 @@ app.use(
 // app.use('/resources', express.static(path.join(__dirname, 'public')));
 // app.set('views', `views`);
 
+
 const mongoUri = process.env.MONGODB_URL;
 mongoose.connect(
   mongoUri,
