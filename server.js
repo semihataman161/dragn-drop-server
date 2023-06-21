@@ -45,6 +45,9 @@ const options = {
       {
         url: `http://localhost:${PORT}`,
       },
+      {
+        url: `http://localhost:8082`,
+      }
     ],
   },
   apis: ["./page/*.js", "./review/*.js", "./user/*.js", "./website/*.js"],
