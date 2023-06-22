@@ -24,8 +24,8 @@ const errorLogger = (error, request, response, next) => {
     status = options.statusCode;
   }
 
-  const fileContent = dateTime + ' -> ' + JSON.stringify({ status, data: request.body, message }) + '\n'
   const dateTime = new Date();
+  const fileContent = dateTime + ' -> ' + JSON.stringify({ status, data: request.body, message }) + '\n';
   appendFileAsync(FILE, fileContent);
 
   // Redirect to errorResponder middleware
