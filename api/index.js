@@ -92,7 +92,7 @@ app.use(errorMiddleware.errorLogger);
 app.use(errorMiddleware.errorResponder);
 
 const LOCAL_PORT = 8081;
-const PORT = process.env.APP_PORT || 8081;
+const PORT = process.env.APP_PORT || LOCAL_PORT;
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
 });
