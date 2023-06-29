@@ -2,7 +2,7 @@
   "name": "dragn-drop-server",
   "version": "1.0.0",
   "description": "Backend Nodejs",
-  "author": "Semih Ataman / Gulsum Simge Bozdogan",
+  "author": "Semih Ataman",
   "main": "api/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
