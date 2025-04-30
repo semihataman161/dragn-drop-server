@@ -5,7 +5,7 @@ npm i
 npm start
 
 # You can access the swagger:
-https://dragn-drop-server-458g.onrender.com/api-docs/
+https://dragn-drop-server.onrender.com/api-docs
 
 # MATERIALS AND METHODS
 In this section, we'll go over the resources and techniques used to create the backend architecture utilizing a layered methodology, more especially the Route-Controller-Service-Model structure.
