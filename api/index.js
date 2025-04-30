@@ -7,32 +7,37 @@ const websiteRoute = require('../website/website.route');
 const pageRoute = require('../page/page.route');
 const reviewRoute = require('../review/review.route');
 const errorMiddleware = require('../middleware/errorMiddleware');
-const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerJsdoc = require('swagger-jsdoc');
 require('dotenv').config();
 require('babel-register');
-
 
 //Initialize App
 const app = express();
 app.use(express.json());
 
-app.use(cors());
+const corsOptions = {
+  origin: function (origin, callback) {
+    callback(null, true);
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 const options = {
   definition: {
-    openapi: "3.1.0",
+    openapi: '3.1.0',
     info: {
-      title: "dragn-drop-server",
-      version: "1.0.0",
-      description:
-        "Express.js and MongoDb Backend API",
+      title: 'dragn-drop-server',
+      version: '1.0.0',
+      description: 'Express.js and MongoDb Backend API',
       license: {
-        name: "MIT",
-        url: "https://spdx.org/licenses/MIT.html",
+        name: 'MIT',
+        url: 'https://spdx.org/licenses/MIT.html',
       },
       contact: {
-        name: "Semih Ataman",
-        email: "semihataman16@gmail.com",
+        name: 'Semih Ataman',
+        email: 'semihataman16@gmail.com',
       },
     },
     servers: [
@@ -41,20 +46,15 @@ const options = {
       },
     ],
   },
-  apis: ["./page/*.js", "./review/*.js", "./user/*.js", "./website/*.js"],
+  apis: ['./page/*.js', './review/*.js', './user/*.js', './website/*.js'],
 };
 
 const specs = swaggerJsdoc(options);
-app.use(
-  "/api-docs",
-  swaggerUi.serve,
-  swaggerUi.setup(specs, { explorer: true })
-);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs, { explorer: true }));
 
 // //HTML and Static file
 // app.use('/resources', express.static(path.join(__dirname, 'public')));
 // app.set('views', `views`);
-
 
 const mongoUri = process.env.MONGODB_URL;
 mongoose.connect(
@@ -71,8 +71,8 @@ mongoose.connect(
   },
 );
 
-app.use('/api/user', userRoute)
-app.use('/api/website', websiteRoute)
+app.use('/api/user', userRoute);
+app.use('/api/website', websiteRoute);
 app.use('/api/page', pageRoute);
 app.use('/api/review', reviewRoute);
 app.use('/api/healthCheck', (req, res) => {
